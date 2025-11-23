@@ -55,11 +55,12 @@ public class HospitalApplication {
             rendezVous.setStatus(StatusRDV.PENDING);
             rendezVous.setMedecin(medecin);
             rendezVous.setPatient(patient);
-            rendezVousRepository.save(rendezVous);
+            RendezVous saveDRDV = hospitalService.saveRDV(rendezVous);
+            System.out.println(saveDRDV.getId());
 
 
 
-            RendezVous rendezvous1=rendezVousRepository.findById(1L).orElse(null);
+            RendezVous rendezvous1=rendezVousRepository.findALL().get(0);
             Consultation consultation=new Consultation();
             consultation.setDataConsultation(new Date());
             consultation.setRendezVous(rendezvous1);
